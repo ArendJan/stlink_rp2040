@@ -1,7 +1,7 @@
 # example code to flash/debug rp2040 / Pico with an stlink
 
 Requires: 
-- build probe code for your stlink with https://github.com/blackmagic-debug/blackmagic
+- build probe code for your stlink with https://github.com/blackmagic-debug/blackmagic (precompiled in binaries/)
   - `meson setup build --cross-file cross-file/stlink.ini -Dtargets=rp -Dbmd_bootloader=false` 
   - this is for stlink-v2
 - build stlink-tool from https://github.com/jeanthom/stlink-tool
