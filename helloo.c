@@ -9,7 +9,7 @@ int main() {
     sio_hw->gpio_hi_oe_set = 1u << 25;
     while(1) {
         sio_hw->gpio_togl = 1u << 25;
-        sleep_ms(1000);
+        sleep_ms(500);
 
     }        // io_bank0_hw->io->ctrl[];
                 // sio_hw->gpio_hi_out = 1u << 25;

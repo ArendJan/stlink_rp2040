@@ -9,9 +9,10 @@
     "servertype": "bmp",
     "request": "attach",
     "cwd": "${workspaceRoot}",
-    "executable": "${workspaceRoot}/build/hello_world.elf", // replace with your executable
+    "executable": "${workspaceRoot}/build/hello_world.elf", // TODO: replace with your executable
     "interface": "swd",
     "device": "RP2040",
+    // TODO: change following
     "BMPGDBSerialPort": "/dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__ST-Link_v2__v1.10.0-1519-g9ac66f55-dirty_15050A2E3030167132303030-if00", // Linux: find this with `ls /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__*-if00` 
     "runToEntryPoint": "main",
 },
@@ -22,10 +23,11 @@
     "servertype": "bmp",
     "request": "launch",
     "cwd": "${workspaceRoot}",
-    "executable": "${workspaceRoot}/build/hello_world.elf", // replace with your executable
+    "executable": "${workspaceRoot}/build/hello_world.elf", // TODO: replace with your executable
     "preLaunchTask": "triggerBMPAndBuild", // build the project before debugging and trigger the stlink to go to normal mode
     "interface": "swd",
     "device": "RP2040",
+    // TODO: change following
     "BMPGDBSerialPort": "/dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__ST-Link_v2__v1.10.0-1519-g9ac66f55-dirty_15050A2E3030167132303030-if00", // Linux: find this with `ls /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__*-if00` 
     "runToEntryPoint": "main",
     "showDevDebugOutput": "raw"
