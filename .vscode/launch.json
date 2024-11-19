@@ -27,10 +27,14 @@
     "preLaunchTask": "triggerBMPAndBuild", // build the project before debugging and trigger the stlink to go to normal mode
     "interface": "swd",
     "device": "RP2040",
-    // TODO: change following
-    "BMPGDBSerialPort": "/dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__ST-Link_v2__v1.10.0-1519-g9ac66f55-dirty_15050A2E3030167132303030-if00", // Linux: find this with `ls /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__*-if00` 
     "runToEntryPoint": "main",
-    "showDevDebugOutput": "raw"
+    "showDevDebugOutput": "raw",
+    // TODO: change following, if on windows, change the two settings in the windows section
+    "BMPGDBSerialPort": "/dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__ST-Link_v2__v1.10.0-1519-g9ac66f55-dirty_15050A2E3030167132303030-if00", // Linux: find this with `ls /dev/serial/by-id/usb-Black_Magic_Debug_Black_Magic_Probe__*-if00` 
+    "windows": {
+        "gdbPath": "C:\\Program Files (x86)\\Arm GNU Toolchain arm-none-eabi\\13.3 rel1\\bin\\arm-none-eabi-gdb.exe", // https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+        "BMPGDBSerialPort": "\\\\.\\COM51", // Windows: find this in devmgmt.msc and look for a serial port, it will be two, probably use the second one (don't yet plug in the pico for this). The magic spell before it is `\\.\`, required for gdb to understand it.
+    }
 },
 
 

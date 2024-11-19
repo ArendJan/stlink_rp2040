@@ -89,10 +89,31 @@
         //     //     "command": "${env:USERPROFILE}/.pico-sdk/openocd/0.12.0+dev/openocd.exe",
         //     // }
         // },
+    
+        {
+            "label": "prepareBuild", // just makes the build folder if not existing, only windows
+            "type": "shell",
+            "command": "[[ -d ${workspaceFolder}/build ]] || cmake -B ${workspaceFolder}/build -S . -DCMAKE_BUILD_TYPE=Debug", // if not exist build folder, then cmake -B build -S . with Debug build type
+            "windows": {
+                "command": "cmd.exe",
+                "args": [
+                    "/c",
+                    "if not exist ${workspaceFolder}\\build ( cmake -B ${workspaceFolder}\\build -S . -DCMAKE_BUILD_TYPE=Debug ) "
+                ]
+            },
+        },
         {
             "label": "build", // just makes the build folder if not existing, and then builds the project
             "type": "shell",
-            "command": "[[ -d ${workspaceFolder}/build ]] || cmake -B ${workspaceFolder}/build -S . && cmake --build ${workspaceFolder}/build",
+            "command": "cmake --build ${workspaceFolder}/build",
+            "dependsOn": ["prepareBuild"], // make sure cmake is prepared before building
+            "windows": {
+                "command": "cmd.exe",
+                "args": [
+                    "/C",
+                    "cmake --build ${workspaceFolder}\\build"
+                ]
+            },
         },
         {
             "label": "triggerBMPAndBuild",
@@ -100,11 +121,17 @@
             "dependsOn": ["build"],
             // stlink-tool from https://github.com/jeanthom/stlink-tool is used to trigger BMP to go to normal mode.
             // TODO: change the path to your stlink-tool binary
-            "command": "/home/arendjan/mirte/stlink-tool/stlink-tool || true", // stlink boots with DFU mode, so need to trigger it to go to normal mode. After first one, it will be in normal mode and this will not do anything.
+            "command": "/home/arendjan/mirte/stlink-tool/stlink-tool", // stlink boots with DFU mode, so need to trigger it to go to normal mode. After first one, it will be in normal mode and this will not do anything.
             "args": [
             ],
             
             "problemMatcher": [],
+            "windows" : {
+                // Windows: downloaded from https://github.com/sakana280/stlink-tool/releases/download/1.0-Win64/stlink-tool.exe , copied to the binaries folder
+                // don't forget to use Zadig to install the driver for the BMP, must be libusbK. The blackmagicprobe will show up as WINUSB device. No need to change it.
+                "command": "${workspaceFolder}/binaries/stlink-tool.exe || cd . ", // cd . is a dummy command to make sure the task runs successfully
+                
+            }
         }
     ]
 }

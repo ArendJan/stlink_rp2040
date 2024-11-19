@@ -1,5 +1,6 @@
-# example code to flash/debug rp2040 / Pico with an stlink
+# example code to flash/debug rp2040 / Pico with an stlink and vscode debugging
 
+# Ubuntu
 Requires: 
 - build probe code for your stlink with https://github.com/blackmagic-debug/blackmagic (precompiled in binaries/)
   - `meson setup build --cross-file cross-file/stlink.ini -Dtargets=rp -Dbmd_bootloader=false` 
@@ -16,6 +17,18 @@ Requires:
 
 Tested on Ubuntu 22.04.
 
+
+# Windows
+Requires: 
+- flash stlink with stlink-tool:
+  - download from https://github.com/sakana280/stlink-tool/releases/download/1.0-Win64/stlink-tool.exe
+  - ./binaries/stlink-tool ./binaries/blackmagic_stlink_firmware.bin
+  - use zadig to fix stlink driver (libusbK), https://zadig.akeo.ie/ , only that one!
+- install arm toolchain for gdb (https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads), make sure it gets added to your path or you need to change the path in launch.json to an absolute path.
+- install cortex debug plugin
+- install raspberry pi pico plugin
+- start vscode as "Pico - Visual Studio Code" to fix the env vars.
+- set the paths in launch.json and tasks.json of some of the binaries
 
 # how it works
 - task `build` will compile the code for the rp2040
