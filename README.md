@@ -21,13 +21,13 @@ Tested on Ubuntu 22.04.
 # Windows
 Requires: 
 - flash stlink with stlink-tool:
-  - download from https://github.com/sakana280/stlink-tool/releases/download/1.0-Win64/stlink-tool.exe
+  - download from https://github.com/sakana280/stlink-tool/releases/download/1.0-Win64/stlink-tool.exe or use one from binaries folder.
   - ./binaries/stlink-tool ./binaries/blackmagic_stlink_firmware.bin
   - use zadig to fix stlink driver (libusbK), https://zadig.akeo.ie/ , only that one!
-- install arm toolchain for gdb (https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads), make sure it gets added to your path or you need to change the path in launch.json to an absolute path.
-- install cortex debug plugin
+- install arm toolchain for gdb (https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads , use the .exe installer), make sure it gets added to your path or you need to change the path in launch.json to an absolute path.
+- install cortex debug plugin, vscode will show a popup for recommended plugins.
 - install raspberry pi pico plugin
-- start vscode as "Pico - Visual Studio Code" to fix the env vars.
+- start vscode as "Pico - Visual Studio Code" to fix the env vars if it's not working. Maybe install python3 from Microsoft Store if it isn't installed.
 - set the paths in launch.json and tasks.json of some of the binaries
 
 # how it works
