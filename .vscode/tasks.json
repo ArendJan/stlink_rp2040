@@ -93,7 +93,7 @@
         {
             "label": "prepareBuild", // just makes the build folder if not existing
             "type": "shell",
-            "command": "[[ -d ${workspaceFolder}/build ]] || cmake -B ${workspaceFolder}/build -S . -DCMAKE_BUILD_TYPE=Debug", // if not exist build folder, then cmake -B build -S . with Debug build type
+            "command": "[[ -d \"${workspaceFolder}/build\" ]] || cmake -B \"${workspaceFolder}/build\" -S . -DCMAKE_BUILD_TYPE=Debug", // if not exist build folder, then cmake -B build -S . with Debug build type
             "windows": {
                 "command": "cmd.exe",
                 "args": [
