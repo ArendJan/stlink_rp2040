@@ -98,20 +98,20 @@
                 "command": "cmd.exe",
                 "args": [
                     "/c",
-                    "if not exist ${workspaceFolder}\\build ( cmake -B ${workspaceFolder}\\build -S . -DCMAKE_BUILD_TYPE=Debug -GNinja ) "
+                    "if not exist \\\"${workspaceFolder}\\build\\\" ( cmake -B \\\"${workspaceFolder}\\build\\\" -S . -DCMAKE_BUILD_TYPE=Debug -GNinja ) "
                 ]
             },
         },
         {
             "label": "build", // builds the project
             "type": "shell",
-            "command": "cmake --build ${workspaceFolder}/build",
+            "command": "cmake --build \"${workspaceFolder}/build\"",
             "dependsOn": ["prepareBuild"], // make sure cmake is prepared before building
             "windows": {
                 "command": "cmd.exe",
                 "args": [
                     "/C",
-                    "cmake --build ${workspaceFolder}\\build"
+                    "cmake --build \\\"${workspaceFolder}\\build\\\""
                 ]
             },
         },
@@ -132,7 +132,7 @@
                 "command": "cmd.exe",
                 "args": [
                     "/C",
-                    "${workspaceFolder}/binaries/stlink-tool.exe || cd . ", // cd . is a dummy command to make sure the task runs successfully
+                    "\\\"${workspaceFolder}/binaries/stlink-tool.exe\\\" || cd . ", // cd . is a dummy command to make sure the task runs successfully
                 ]
                
             }
